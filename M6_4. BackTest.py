@@ -144,7 +144,7 @@ def sharpe(N, K):
 
     ReturnDF = {'Sharpe': [SharpeRatio], 'EMA': [N], 'STD': [K], '# of Trade': [Transaction_order]}
     ReturnDF = pd.DataFrame(ReturnDF)
-
+    print(ReturnDF)
     return(ReturnDF)
 
 SharpeRecord = pd.DataFrame(columns=['Sharpe', 'EMA', 'STD', '# of Trade'])
@@ -152,7 +152,6 @@ for N in range(900, 2050, 50):    #upperband is not inclusive
     for K in np.arange(2.5, 4.5, 0.5):
         dfx = sharpe(N, K)
         SharpeRecord = SharpeRecord.append(dfx, ignore_index=True)
-        print(sharpe(N, K), N, K)
 SharpeRecord.to_csv("C:/Users/www/Desktop/BackTest/M6/Sharpe Record.csv")
 
 #print(sharpe(1050, 2.5)) #参数
